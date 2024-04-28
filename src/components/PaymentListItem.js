@@ -109,6 +109,7 @@ const PaymentListItem = ({item}) => {
               <Text
                 style={{
                   fontFamily: Fonts.bold,
+                  fontWeight: '800',
                   color: 'rgba(61, 61, 61, 1)',
                   fontSize: 16,
                 }}>
@@ -117,6 +118,7 @@ const PaymentListItem = ({item}) => {
               <Text
                 style={{
                   fontFamily: Fonts.semibold,
+                  fontWeight: '600',
                   fontSize: 16,
                   color: 'rgba(61, 61, 61, 1)',
                   lineHeight: 15,
@@ -134,6 +136,7 @@ const PaymentListItem = ({item}) => {
               <Text
                 style={{
                   fontFamily: Fonts.semibold,
+                  fontWeight: '600',
                   color: 'rgba(130, 130, 130, 1)',
                   fontSize: 12,
                 }}>
@@ -142,6 +145,7 @@ const PaymentListItem = ({item}) => {
               <Text
                 style={{
                   fontFamily: Fonts.semibold,
+                  fontWeight: '600',
                   color: 'rgba(108, 84, 230, 1)',
                   fontSize: 12,
                 }}>
@@ -158,6 +162,7 @@ const PaymentListItem = ({item}) => {
               <Text
                 style={{
                   fontFamily: Fonts.semibold,
+                  fontWeight: '600',
                   color: 'rgba(130, 130, 130, 1)',
                   fontSize: 12,
                 }}>
@@ -166,6 +171,7 @@ const PaymentListItem = ({item}) => {
               <Text
                 style={{
                   fontFamily: Fonts.semibold,
+                  fontWeight: '600',
                   color: 'rgba(108, 84, 230, 1)',
                   fontSize: 12,
                 }}>

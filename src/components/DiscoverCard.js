@@ -11,11 +11,13 @@ import Fonts from '../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import MenuDetails from './MenuDetails';
 import {MENU_DATA_DISCOVER} from '../constants/MockData';
+import useChannels from '../hooks/useChaneels';
+import useHandleImageColor from '../hooks/useHandleImageColor';
 
 export default function DiscoverCard({item, key}) {
   const navigation = useNavigation();
   const [isVisible, setisVisible] = useState(false);
-
+  const channels = useChannels();
   return (
     <View
       key={key}
@@ -41,6 +43,7 @@ export default function DiscoverCard({item, key}) {
             fontSize: 18,
             textAlign: 'center',
             fontFamily: Fonts.bold,
+            fontWeight: '800',
             color: item.color,
             marginTop: 15,
           }}>
@@ -51,9 +54,10 @@ export default function DiscoverCard({item, key}) {
             fontSize: 13,
             textAlign: 'center',
             fontFamily: Fonts.regular,
+            fontWeight: '400',
             color: 'black',
             lineHeight: 13,
-            // marginTop: 10,
+            marginTop: 7,
           }}>
           {item.description}
         </Text>
@@ -76,7 +80,14 @@ export default function DiscoverCard({item, key}) {
             borderRightWidth: 1,
             borderColor: 'rgba(237, 237, 237, 1)',
           }}>
-          <SvgXml style={{alignSelf: 'center'}} xml={SVGChat} />
+          <SvgXml
+            style={{alignSelf: 'center'}}
+            xml={
+              channels
+                ? useHandleImageColor(SVGChat, channels?.style_primary_color)
+                : SVGChat
+            }
+          />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('ChatBox')}
@@ -86,7 +97,14 @@ export default function DiscoverCard({item, key}) {
             width: '50%',
             borderBottomEndRadius: 15,
           }}>
-          <SvgXml style={{alignSelf: 'center'}} xml={SVGSend} />
+          <SvgXml
+            style={{alignSelf: 'center'}}
+            xml={
+              channels
+                ? useHandleImageColor(SVGSend, channels?.style_primary_color)
+                : SVGSend
+            }
+          />
         </TouchableOpacity>
       </View>
 

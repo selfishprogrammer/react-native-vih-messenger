@@ -9,16 +9,20 @@ import {SvgXml} from 'react-native-svg';
 import {SVGCalender, SVGCard2, SVGDown2} from '../../constants/Images';
 import CardModal from '../../components/CardModal';
 import Fonts from '../../constants/Fonts';
+import useChannels from '../../hooks/useChaneels';
+import useHandleImageColor from '../../hooks/useHandleImageColor';
 
 export default function AddPaymentScreen() {
   const [isCardVisible, setisCardVisible] = useState(false);
   const [cardSelect, setcardSelect] = useState({});
-
+  const channels = useChannels();
   return (
     <Container
       noPadding={true}
       statusBarStyle="light"
-      statusBarColor={'rgba(55, 2, 200, 1)'}
+      statusBarColor={
+        channels ? channels?.style_primary_color : 'rgba(55, 2, 200, 1)'
+      }
       backgroundColor={'rgba(255, 255, 255, 0.3)'}>
       <Gradient
         isBlue={true}
@@ -59,6 +63,7 @@ export default function AddPaymentScreen() {
                     color: 'black',
                     marginHorizontal: 8,
                     fontFamily: Fonts.regular,
+                    fontWeight: '400',
                   }}>
                   {cardSelect?.name}
                 </Text>
@@ -117,7 +122,17 @@ export default function AddPaymentScreen() {
                 label={'Expiry Date'}
                 style={{width: '53%'}}
               />
-              <SvgXml xml={SVGCalender} style={{marginBottom: -45}} />
+              <SvgXml
+                xml={
+                  channels
+                    ? useHandleImageColor(
+                        SVGCalender,
+                        channels?.style_primary_color,
+                      )
+                    : SVGCalender
+                }
+                style={{marginBottom: -45}}
+              />
             </View>
           </View>
           <GenericButton

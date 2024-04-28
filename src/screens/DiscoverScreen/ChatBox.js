@@ -10,6 +10,7 @@ import GenericButton from '../../components/GenericButton';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {setBottomNavigation} from '../../redux/slices/authenticationSlice';
+import useChannels from '../../hooks/useChaneels';
 
 export default function ChatBox() {
   const navigation = useNavigation();
@@ -20,11 +21,15 @@ export default function ChatBox() {
       dispatch(setBottomNavigation(true));
     }
   }, [isFocused]);
+  const channels = useChannels();
   return (
     <Container
       noPadding={true}
       statusBarStyle="light"
-      statusBarColor={'rgba(55, 2, 200, 1)'}
+      statusBarColor={
+        channels ? channels?.style_primary_color : 'rgba(55, 2, 200, 1)'
+      }
+      isImage={true}
       backgroundColor={'rgba(255, 255, 255, 0.3)'}>
       <Gradient color={['rgba(255, 255, 255, 1)', 'rgba(156, 21, 247, 0.1)']}>
         <BlueHeader />
@@ -49,6 +54,7 @@ export default function ChatBox() {
                 color: 'black',
                 textAlign: 'center',
                 fontFamily: Fonts.bold,
+                fontWeight: '700',
                 fontSize: 18,
               }}>
               Central Bank Of India
@@ -58,6 +64,7 @@ export default function ChatBox() {
                 color: 'gray',
                 textAlign: 'center',
                 fontFamily: Fonts.regular,
+                fontWeight: '400',
                 fontSize: 12,
               }}>
               Bank and Finance
@@ -67,6 +74,7 @@ export default function ChatBox() {
                 color: 'gray',
                 textAlign: 'center',
                 fontFamily: Fonts.regular,
+                fontWeight: '400',
                 fontSize: 12,
                 marginTop: 10,
                 marginHorizontal: 25,

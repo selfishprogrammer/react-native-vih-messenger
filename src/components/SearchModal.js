@@ -93,6 +93,7 @@ export default function SearchModal({
                           style={{
                             color: 'black',
                             fontFamily: Fonts.bold,
+                            fontWeight: '800',
                             fontSize: 16,
                           }}>
                           {i?.name}
@@ -101,6 +102,7 @@ export default function SearchModal({
                           style={{
                             color: 'black',
                             fontFamily: Fonts.regular,
+                            fontWeight: '400',
                             fontSize: 10,
                             lineHeight: 10,
                           }}>
@@ -145,6 +147,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: '#262626',
     fontFamily: Fonts.medium,
+    fontWeight: '500',
     fontSize: 17,
   },
   modalView2: {
@@ -174,6 +177,7 @@ const styles = StyleSheet.create({
   btnOpacity: {
     textAlign: 'center',
     fontFamily: Fonts.medium,
+    fontWeight: '500',
     fontSize: 16,
     color: 'red',
   },
@@ -186,6 +190,7 @@ const styles = StyleSheet.create({
   btnTxt: {
     textAlign: 'center',
     fontFamily: Fonts.medium,
+    fontWeight: '500',
     fontSize: 16,
     color: '#fff',
   },

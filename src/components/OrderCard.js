@@ -34,7 +34,12 @@ export default function OrderCard() {
             <SvgXml xml={SVGPro} />
           </View>
           <View style={{marginLeft: 10}}>
-            <Text style={{fontFamily: Fonts.bold, color: 'black'}}>
+            <Text
+              style={{
+                fontFamily: Fonts.bold,
+                fontWeight: '700',
+                color: 'black',
+              }}>
               GNC Syrup
             </Text>
             <View
@@ -60,6 +65,7 @@ export default function OrderCard() {
                     fontSize: 10,
                     color: 'rgba(108, 84, 230, 1)',
                     fontFamily: Fonts.medium,
+                    fontWeight: '500',
                   }}>
                   x1
                 </Text>
@@ -72,6 +78,7 @@ export default function OrderCard() {
             fontSize: 12,
             color: 'black',
             fontFamily: Fonts.regular,
+            fontWeight: '400',
             marginTop: 29,
           }}>
           11.80 €
@@ -89,6 +96,7 @@ export default function OrderCard() {
           <Text
             style={{
               fontFamily: Fonts.regular,
+              fontWeight: '400',
               fontSize: 13,
               color: 'rgba(108, 84, 230, 1)',
             }}>

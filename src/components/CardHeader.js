@@ -25,6 +25,7 @@ export default function CardHeader() {
             color: 'rgba(30, 30, 30, 1)',
             fontSize: 12,
             fontFamily: Fonts.regular,
+            fontWeight: '300',
             marginLeft: 7,
           }}>
           Delivered on 16.07.2022, 20:53
@@ -42,6 +43,7 @@ export default function CardHeader() {
             fontSize: 10,
             color: 'rgba(108, 84, 230, 1)',
             fontFamily: Fonts.medium,
+            fontWeight: '400',
           }}>
           M2Z4-VVY2
         </Text>

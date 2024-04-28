@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
   RefreshControl,
+  Text,
 } from 'react-native';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
@@ -29,8 +30,9 @@ import {
 } from '../../constants/Images';
 import {todoList} from '../../constants/MockData';
 import {SvgXml} from 'react-native-svg';
+import useChannels from '../../hooks/useChaneels';
 
-export default function ProviderChatScreen(props) {
+export default function ProviderChatScreen({onClose}) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
@@ -47,7 +49,7 @@ export default function ProviderChatScreen(props) {
       setfilterSearch(todoList);
     }
   }, [isFocused]);
-
+  const channels = useChannels();
   const [opacity] = useState(new Animated.Value(1));
   const pinItem = item => {
     // Update the isPinned property of the item
@@ -406,6 +408,7 @@ export default function ProviderChatScreen(props) {
               console.log(e.length, 'e');
               setfilterSearch(e);
             }}
+            onClose={onClose}
           />
           <Animated.View
             {...panResponder.panHandlers}
@@ -433,21 +436,36 @@ export default function ProviderChatScreen(props) {
                 backgroundColor: 'rgba(255, 255, 255, 0.5)',
                 borderRadius: 20,
               }}></TouchableOpacity>
-            <GradiantText
-              style={{
-                fontSize: 25,
-                fontFamily: Fonts.bold,
-                color: 'rgba(130, 130, 130, 1)',
-                textAlign: 'center',
-                marginVertical: 15,
-              }}
-              colors={[
-                'rgba(108, 84, 230, 1)',
-                'rgba(156, 21, 247, 1)',
-                'rgba(108, 84, 230, 1)',
-              ]}>
-              Chats
-            </GradiantText>
+            {!channels ? (
+              <GradiantText
+                style={{
+                  fontSize: 25,
+                  fontFamily: Fonts.bold,
+                  color: 'rgba(130, 130, 130, 1)',
+                  textAlign: 'center',
+                  marginVertical: 15,
+                }}
+                colors={[
+                  'rgba(108, 84, 230, 1)',
+                  'rgba(156, 21, 247, 1)',
+                  'rgba(108, 84, 230, 1)',
+                ]}>
+                Chats
+              </GradiantText>
+            ) : (
+              <Text
+                style={{
+                  fontSize: 25,
+                  fontFamily: Fonts.bold,
+                  color: channels?.style_primary_color,
+                  textAlign: 'center',
+                  marginVertical: 15,
+                  fontWeight: '800',
+                }}>
+                Chats
+              </Text>
+            )}
+
             <FlatList
               removeClippedSubviews={true}
               data={filterSearch}

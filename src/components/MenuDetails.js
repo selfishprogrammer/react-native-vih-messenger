@@ -39,6 +39,7 @@ const MenuDetails = ({isVisible, closeModal, data, cfmCallBack}) => {
                   fontSize: 18,
                   marginBottom: 15,
                   fontFamily: Fonts.medium,
+                  fontWeight: '500',
                   color: 'black',
                 }}>
                 {i.name}
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
   cntgText: {
     fontSize: 18,
     fontFamily: Fonts.bold,
+    fontWeight: '800',
     color: '#fff',
     textAlign: 'center',
   },

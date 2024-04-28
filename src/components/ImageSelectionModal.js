@@ -242,6 +242,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: '#262626',
     fontFamily: Fonts.medium,
+
+    fontWeight: '400',
     fontSize: 17,
   },
   modalView2: {
@@ -270,6 +272,7 @@ const styles = StyleSheet.create({
   btnOpacity: {
     textAlign: 'center',
     fontFamily: Fonts.medium,
+    fontWeight: '500',
     fontSize: 16,
     color: 'red',
   },
@@ -282,6 +285,7 @@ const styles = StyleSheet.create({
   btnTxt: {
     textAlign: 'center',
     fontFamily: Fonts.medium,
+    fontWeight: '500',
     fontSize: 16,
     color: '#fff',
   },

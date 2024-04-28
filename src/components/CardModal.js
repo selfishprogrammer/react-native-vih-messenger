@@ -49,6 +49,7 @@ export default function CardModal({visible, closeModal}) {
                 color: '#fff',
                 marginHorizontal: 8,
                 fontFamily: Fonts.semibold,
+                fontWeight: '600',
               }}>
               Visa Card
             </Text>
@@ -69,6 +70,7 @@ export default function CardModal({visible, closeModal}) {
                 color: '#fff',
                 marginHorizontal: 8,
                 fontFamily: Fonts.semibold,
+                fontWeight: '600',
               }}>
               Master Card
             </Text>
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
   cntgText: {
     fontSize: 18,
     fontFamily: Fonts.bold,
+    fontWeight: '800',
     color: '#fff',
     textAlign: 'center',
   },

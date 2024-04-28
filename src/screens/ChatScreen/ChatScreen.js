@@ -138,6 +138,7 @@ export default function ChatScreen() {
             style={{
               fontSize: 25,
               fontFamily: Fonts.bold,
+              fontWeight: '700',
               color: 'rgba(130, 130, 130, 1)',
               textAlign: 'center',
               marginVertical: 15,

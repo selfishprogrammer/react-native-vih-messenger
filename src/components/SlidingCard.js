@@ -31,8 +31,11 @@ import {
 import GradiantContent from '../HOC/GrandiantContent';
 import Fonts from '../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
+import useChannels from '../hooks/useChaneels';
 
 const ListItem = ({item, pinItem}) => {
+  const channels = useChannels();
+
   const [forceUpdate, setforceUpdate] = useState(false);
   const navigation = useNavigation();
   const RightSwipeActions = () => {
@@ -127,7 +130,12 @@ const ListItem = ({item, pinItem}) => {
               style={{width: 40, height: 40}}
             />
             <View style={{marginHorizontal: 8}}>
-              <Text style={{fontFamily: Fonts.bold, color: 'black'}}>
+              <Text
+                style={{
+                  fontFamily: Fonts.bold,
+                  fontWeight: '700',
+                  color: 'black',
+                }}>
                 {item?.name}
               </Text>
               {item?.text ? (
@@ -135,9 +143,11 @@ const ListItem = ({item, pinItem}) => {
                   numberOfLines={1}
                   style={{
                     fontFamily: item.read ? Fonts.regular : Fonts.semibold,
+                    fontWeight: item.read ? '400' : '700',
                     fontSize: 12,
                     color: 'black',
                     lineHeight: 15,
+                    marginTop: 6,
                   }}>
                   {item?.text}
                 </Text>
@@ -153,29 +163,54 @@ const ListItem = ({item, pinItem}) => {
               marginBottom: 10,
             }}>
             <View>
-              {item.count > 0 && (
-                <Gradient
-                  color={['#0049E6', '#FF4CF8']}
-                  style={{
-                    alignSelf: 'flex-end',
-                    // width: 15,
-                    // height: 15,
-                    paddingHorizontal: 5,
-                    // paddingVertical: 1,
-                    borderRadius: 30,
-                    marginBottom: 5,
-                  }}>
-                  <Text
-                    numberOfLines={1}
+              {item.count > 0 &&
+                (!channels ? (
+                  <Gradient
+                    color={['#0049E6', '#FF4CF8']}
                     style={{
-                      fontFamily: Fonts.bold,
-                      fontSize: 10,
-                      color: 'white',
+                      alignSelf: 'flex-end',
+                      // width: 15,
+                      // height: 15,
+                      paddingHorizontal: 5,
+                      // paddingVertical: 1,
+                      borderRadius: 30,
+                      marginBottom: 5,
                     }}>
-                    {item.count}
-                  </Text>
-                </Gradient>
-              )}
+                    <Text
+                      numberOfLines={1}
+                      style={{
+                        fontFamily: Fonts.bold,
+                        fontWeight: '700',
+                        fontSize: 10,
+                        color: 'white',
+                      }}>
+                      {item.count}
+                    </Text>
+                  </Gradient>
+                ) : (
+                  <View
+                    style={{
+                      backgroundColor: channels?.style_primary_color,
+                      alignSelf: 'flex-end',
+                      // width: 15,
+                      // height: 15,
+                      paddingHorizontal: 5,
+                      // paddingVertical: 1,
+                      borderRadius: 30,
+                      marginBottom: 5,
+                    }}>
+                    <Text
+                      numberOfLines={1}
+                      style={{
+                        fontFamily: Fonts.bold,
+                        fontWeight: '700',
+                        fontSize: 10,
+                        color: 'white',
+                      }}>
+                      {item.count}
+                    </Text>
+                  </View>
+                ))}
               <Text
                 numberOfLines={1}
                 style={{
@@ -183,7 +218,9 @@ const ListItem = ({item, pinItem}) => {
                   fontSize: 12,
                   color: 'black',
                   lineHeight: 15,
+                  marginTop: 10,
                   textAlign: 'right',
+                  fontWeight: '500',
                 }}>
                 Today, 12:25
               </Text>

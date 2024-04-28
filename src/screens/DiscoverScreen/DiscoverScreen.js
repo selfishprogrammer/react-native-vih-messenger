@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   FlatList,
   RefreshControl,
+  Text,
 } from 'react-native';
 import Container from '../../HOC/Container';
 import Gradient from '../../HOC/Gradiant';
@@ -22,6 +23,7 @@ import {
   setBottomNavigation,
 } from '../../redux/slices/authenticationSlice';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import useChannels from '../../hooks/useChaneels';
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -42,6 +44,7 @@ const DiscoverScreen = () => {
   }, [isFocused]);
 
   const [opacity] = useState(new Animated.Value(1));
+  const channels = useChannels();
 
   const panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: (_, gestureState) =>
@@ -146,21 +149,36 @@ const DiscoverScreen = () => {
                 backgroundColor: 'rgba(255, 255, 255, 0.5)',
                 borderRadius: 20,
               }}></TouchableOpacity>
-            <GradiantText
-              style={{
-                fontSize: 25,
-                fontFamily: Fonts.bold,
-                color: 'rgba(130, 130, 130, 1)',
-                textAlign: 'center',
-                marginVertical: 15,
-              }}
-              colors={[
-                'rgba(108, 84, 230, 1)',
-                'rgba(156, 21, 247, 1)',
-                'rgba(108, 84, 230, 1)',
-              ]}>
-              Discover
-            </GradiantText>
+            {!channels ? (
+              <GradiantText
+                style={{
+                  fontSize: 25,
+                  fontFamily: Fonts.bold,
+                  fontWeight: '800',
+                  color: 'rgba(130, 130, 130, 1)',
+                  textAlign: 'center',
+                  marginVertical: 15,
+                }}
+                colors={[
+                  'rgba(108, 84, 230, 1)',
+                  'rgba(156, 21, 247, 1)',
+                  'rgba(108, 84, 230, 1)',
+                ]}>
+                Discover
+              </GradiantText>
+            ) : (
+              <Text
+                style={{
+                  fontSize: 25,
+                  fontFamily: Fonts.bold,
+                  color: channels?.style_primary_color,
+                  textAlign: 'center',
+                  marginVertical: 15,
+                  fontWeight: '800',
+                }}>
+                Discover
+              </Text>
+            )}
             <ScrollView
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{padding: 10}}

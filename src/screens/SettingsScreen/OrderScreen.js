@@ -5,6 +5,7 @@ import Gradient from '../../HOC/Gradiant';
 import BlueHeader from '../../components/BlueHeader';
 import Fonts from '../../constants/Fonts';
 import OrderCard from '../../components/OrderCard';
+import useChannels from '../../hooks/useChaneels';
 
 export default function OrderScreen() {
   const [selectedBtn, setSelectedBtn] = useState('All'); // State to track the selected button
@@ -12,10 +13,13 @@ export default function OrderScreen() {
   const handleBtn = btnName => {
     setSelectedBtn(btnName); // Update the state with the selected button name
   };
+  const channels = useChannels();
 
   return (
     <Container
-      statusBarColor={'rgba(55, 2, 200, 1)'}
+      statusBarColor={
+        channels ? channels?.style_primary_color : 'rgba(55, 2, 200, 1)'
+      }
       backgroundColor={'rgba(255, 255, 255, 0.3)'}>
       <Gradient color={['rgba(255, 255, 255, 1)', 'rgba(156, 21, 247, 0.1)']}>
         <BlueHeader title={'Order Listing'} />
@@ -42,6 +46,7 @@ export default function OrderScreen() {
                       style={{
                         color: 'rgba(12, 38, 56, 1)',
                         fontFamily: Fonts.regular,
+                        fontWeight: '400',
                         fontSize: 12,
                       }}>
                       {btnName.toUpperCase()}
@@ -71,6 +76,7 @@ export default function OrderScreen() {
                           textAlign: 'center',
                           fontSize: 12,
                           fontFamily: Fonts.medium,
+                          fontWeight: '500',
                         }}>
                         {btnName.toUpperCase()}
                       </Text>

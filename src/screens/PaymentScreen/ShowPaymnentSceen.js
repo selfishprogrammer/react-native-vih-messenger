@@ -26,6 +26,7 @@ import {
   SVGVoda,
 } from '../../constants/Images';
 import PaymentListItem from '../../components/PaymentListItem';
+import useChannels from '../../hooks/useChaneels';
 export default function ShowPaymnentSceen() {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
@@ -75,11 +76,14 @@ export default function ShowPaymnentSceen() {
 
     // Add more items as needed
   ];
+  const channels = useChannels();
   return (
     <Container
       noPadding={true}
       statusBarStyle="light"
-      statusBarColor={'rgba(55, 2, 200, 1)'}
+      statusBarColor={
+        channels ? channels?.style_primary_color : 'rgba(55, 2, 200, 1)'
+      }
       backgroundColor={'rgba(255, 255, 255, 0.3)'}>
       <Gradient
         isBlue={true}
@@ -133,6 +137,7 @@ export default function ShowPaymnentSceen() {
                 color: 'white',
                 fontSize: 14,
                 fontFamily: Fonts.semibold,
+                fontWeight: '600',
               }}>
               Amazon Platinium
             </Text>
@@ -146,6 +151,7 @@ export default function ShowPaymnentSceen() {
                 color: 'white',
                 fontSize: 20,
                 fontFamily: Fonts.regular,
+                fontWeight: '400',
               }}>
               1234 6789 1112 0101
             </Text>
@@ -159,6 +165,7 @@ export default function ShowPaymnentSceen() {
                 color: 'white',
                 fontSize: 20,
                 fontFamily: Fonts.semibold,
+                fontWeight: '600',
               }}>
               $3.469.52
             </Text>
@@ -168,6 +175,7 @@ export default function ShowPaymnentSceen() {
               color: 'rgba(33, 34, 38, 1)',
               marginHorizontal: 8,
               fontFamily: Fonts.semibold,
+              fontWeight: '600',
               fontSize: 17,
               marginTop: -40,
               marginBottom: 10,

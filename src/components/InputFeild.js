@@ -11,7 +11,13 @@ export default function InputFeild({
 }) {
   return (
     <View style={{marginVertical: 5, ...style}}>
-      <Text style={{fontFamily: Fonts.italicMedium, color: 'black', margin: 8}}>
+      <Text
+        style={{
+          fontFamily: Fonts.italicMedium,
+          color: 'black',
+          margin: 8,
+          fontWeight: '500',
+        }}>
         {label}
       </Text>
       <View
@@ -29,6 +35,7 @@ export default function InputFeild({
             borderWidth: 0,
             color: 'black',
             fontFamily: Fonts.italicMedium,
+            fontWeight: '500',
             paddingHorizontal: 15,
             height: 45,
           }}

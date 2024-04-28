@@ -1,6 +1,7 @@
-import {StatusBar, SafeAreaView, Platform} from 'react-native';
+import {StatusBar, SafeAreaView, Platform, ImageBackground} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import useChannels from '../hooks/useChaneels';
 
 export default function Container({
   statusBarColor,
@@ -9,7 +10,9 @@ export default function Container({
   children,
   bgColor,
   noPadding,
+  isImage,
 }) {
+  const channels = useChannels();
   return (
     <>
       {Platform.OS === 'ios' ? (
@@ -27,15 +30,29 @@ export default function Container({
         barStyle={statusBarStyle == 'light' ? 'light-content' : 'dark-content'}
         backgroundColor={bgColor ?? statusBarColor}
       />
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: backgroundColor,
-          paddingBottom: noPadding ? 0 : 60,
-          padding: 0,
-        }}>
-        {children}
-      </SafeAreaView>
+      {channels && isImage ? (
+        <ImageBackground
+          source={{
+            uri: channels?.Choose_other_image,
+          }}
+          style={{
+            flex: 1,
+            resizeMode: 'cover', // or 'stretch'
+            justifyContent: 'center',
+          }}>
+          {children}
+        </ImageBackground>
+      ) : (
+        <SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: backgroundColor,
+            paddingBottom: noPadding ? 0 : 60,
+            padding: 0,
+          }}>
+          {children}
+        </SafeAreaView>
+      )}
     </>
   );
 }

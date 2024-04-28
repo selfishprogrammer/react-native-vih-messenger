@@ -15,9 +15,12 @@ import GradiantText from './GradiantText';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {setActiveTab} from '../redux/slices/authenticationSlice';
+import useChannels from '../hooks/useChaneels';
+import useHandleImageColor from '../hooks/useHandleImageColor';
 
 export default function NavigationSlide() {
   const {activeTab} = useSelector(state => state.authenticationSlice);
+  const channels = useChannels();
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const handleNavigation = tab => {
@@ -40,48 +43,125 @@ export default function NavigationSlide() {
     <View style={styles.container}>
       <Pressable style={styles.subCont} onPress={() => handleNavigation('1')}>
         <SvgXml
-          xml={activeTab === '1' ? SVGDiscoverActive : SVGDiscoverInactive}
+          xml={
+            activeTab === '1'
+              ? channels
+                ? useHandleImageColor(
+                    SVGDiscoverActive,
+                    channels?.style_primary_color,
+                  )
+                : SVGDiscoverActive
+              : SVGDiscoverInactive
+          }
         />
         {activeTab === '1' ? (
-          <GradiantText
-            style={{...styles.texts, fontFamily: Fonts.bold}}
-            colors={[
-              'rgba(108, 84, 230, 1)',
-              'rgba(156, 21, 247, 1)',
-              'rgba(108, 84, 230, 1)',
-            ]}>
-            Discover
-          </GradiantText>
+          !channels ? (
+            <GradiantText
+              style={{
+                ...styles.texts,
+                fontWeight: '700',
+                fontFamily: Fonts.bold,
+              }}
+              colors={[
+                'rgba(108, 84, 230, 1)',
+                'rgba(156, 21, 247, 1)',
+                'rgba(108, 84, 230, 1)',
+              ]}>
+              Discover
+            </GradiantText>
+          ) : (
+            <Text
+              style={{
+                ...styles.texts,
+                fontWeight: '700',
+                fontFamily: Fonts.bold,
+                color: channels?.style_primary_color,
+              }}>
+              Discover
+            </Text>
+          )
         ) : (
           <Text style={styles.texts}>Discover</Text>
         )}
       </Pressable>
       <Pressable style={styles.subCont} onPress={() => handleNavigation('2')}>
-        <SvgXml xml={activeTab === '2' ? SVGChatActive : SVGChatInactive} />
+        <SvgXml
+          xml={
+            activeTab === '2'
+              ? channels
+                ? useHandleImageColor(
+                    SVGChatActive,
+                    channels?.style_primary_color,
+                  )
+                : SVGChatActive
+              : SVGChatInactive
+          }
+        />
         {activeTab === '2' ? (
-          <GradiantText
-            style={{...styles.texts, fontFamily: Fonts.bold}}
-            colors={[
-              'rgba(108, 84, 230, 1)',
-              'rgba(156, 21, 247, 1)',
-              'rgba(108, 84, 230, 1)',
-            ]}>
-            Chats
-          </GradiantText>
+          !channels ? (
+            <GradiantText
+              style={{
+                ...styles.texts,
+                fontWeight: '700',
+                fontFamily: Fonts.bold,
+              }}
+              colors={[
+                'rgba(108, 84, 230, 1)',
+                'rgba(156, 21, 247, 1)',
+                'rgba(108, 84, 230, 1)',
+              ]}>
+              Chats
+            </GradiantText>
+          ) : (
+            <Text
+              style={{
+                ...styles.texts,
+                fontWeight: '700',
+                fontFamily: Fonts.bold,
+                color: channels?.style_primary_color,
+              }}>
+              Chats
+            </Text>
+          )
         ) : (
           <Text style={styles.texts}>Chat</Text>
         )}
       </Pressable>
       <Pressable style={styles.subCont} onPress={() => handleNavigation('3')}>
         <SvgXml
-          xml={activeTab === '3' ? SVGSettingsActive : SVGInactiveSettings}
+          xml={
+            activeTab === '3'
+              ? channels
+                ? useHandleImageColor(
+                    SVGSettingsActive,
+                    channels?.style_primary_color,
+                  )
+                : SVGSettingsActive
+              : SVGInactiveSettings
+          }
         />
         {activeTab === '3' ? (
-          <GradiantText
-            style={{...styles.texts, fontFamily: Fonts.bold}}
-            colors={['#0049E6', '#FF4CF8', '#9C15F7']}>
-            Settings
-          </GradiantText>
+          !channels ? (
+            <GradiantText
+              style={{
+                ...styles.texts,
+                fontWeight: '700',
+                fontFamily: Fonts.bold,
+              }}
+              colors={['#0049E6', '#FF4CF8', '#9C15F7']}>
+              Settings
+            </GradiantText>
+          ) : (
+            <Text
+              style={{
+                ...styles.texts,
+                fontWeight: '700',
+                fontFamily: Fonts.bold,
+                color: channels?.style_primary_color,
+              }}>
+              Settings
+            </Text>
+          )
         ) : (
           <Text style={styles.texts}>Settings</Text>
         )}
@@ -112,6 +192,7 @@ const styles = StyleSheet.create({
   },
   texts: {
     fontFamily: Fonts.regular,
+    fontWeight: '400',
     color: 'rgba(130, 130, 130, 1)',
     marginLeft: 4,
   },

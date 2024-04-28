@@ -88,6 +88,7 @@ export default function SettingScreen() {
               style={{
                 fontSize: 14,
                 fontFamily: Fonts.bold,
+                fontWeight: '700',
                 color: 'rgba(130, 130, 130, 1)',
                 textAlign: 'center',
                 // marginVertical: 15,
@@ -105,6 +106,7 @@ export default function SettingScreen() {
               color: 'black',
               marginHorizontal: 8,
               fontFamily: Fonts.bold,
+              fontWeight: '700',
               marginTop: 40,
             }}>
             Basic Settings
@@ -134,6 +136,7 @@ export default function SettingScreen() {
                     color: 'black',
                     marginHorizontal: 8,
                     fontFamily: Fonts.regular,
+                    fontWeight: '400',
                   }}>
                   Active Status
                 </Text>
@@ -171,6 +174,7 @@ export default function SettingScreen() {
                     color: 'black',
                     marginHorizontal: 8,
                     fontFamily: Fonts.regular,
+                    fontWeight: '600',
                   }}>
                   Notification
                 </Text>
@@ -202,6 +206,7 @@ export default function SettingScreen() {
                         color: 'black',
                         marginHorizontal: 8,
                         fontFamily: Fonts.regular,
+                        fontWeight: '600',
                       }}>
                       Vibration
                     </Text>
@@ -235,6 +240,7 @@ export default function SettingScreen() {
                         color: 'black',
                         marginHorizontal: 8,
                         fontFamily: Fonts.regular,
+                        fontWeight: '600',
                       }}>
                       Pop up notification
                     </Text>
@@ -268,6 +274,7 @@ export default function SettingScreen() {
                         color: 'black',
                         marginHorizontal: 8,
                         fontFamily: Fonts.regular,
+                        fontWeight: '600',
                       }}>
                       Notification sound
                     </Text>
@@ -288,6 +295,7 @@ export default function SettingScreen() {
               color: 'black',
               marginHorizontal: 8,
               fontFamily: Fonts.bold,
+              fontWeight: '700',
               marginTop: 40,
             }}>
             Services
@@ -318,6 +326,7 @@ export default function SettingScreen() {
                     color: 'black',
                     marginHorizontal: 8,
                     fontFamily: Fonts.regular,
+                    fontWeight: '600',
                   }}>
                   Orders
                 </Text>
@@ -350,6 +359,7 @@ export default function SettingScreen() {
                     color: 'black',
                     marginHorizontal: 8,
                     fontFamily: Fonts.regular,
+                    fontWeight: '600',
                   }}>
                   Payment
                 </Text>
